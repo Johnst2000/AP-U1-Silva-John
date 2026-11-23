@@ -1,20 +1,14 @@
 1;P1;INICIO_PROCESO;puerta=P1,coordinador=127.0.0.1:5000
-10;P1;COORDINADOR_CONECTADO;coordinador=127.0.0.1:5000
-11;P1;ENVIO_SOLICITUD;msg=P1-toyjef-1,tipo=ENTRADA,persona=ana
-15;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-1,resultado=AUTORIZADA,aforo=1/10
-16;P1;ENVIO_SOLICITUD;msg=P1-toyjef-2,tipo=ENTRADA,persona=pedro
-24;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-2,resultado=AUTORIZADA,aforo=4/10
-29;P1;ENVIO_SOLICITUD;msg=P1-toyjef-3,tipo=SALIDA,persona=ana
-40;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-3,resultado=AUTORIZADA,aforo=2/10
-41;P1;ENVIO_SOLICITUD;msg=P1-toyjef-4,tipo=ESTADO,persona=-
-44;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-4,resultado=ESTADO,aforo=2/10
-116;P1;ENVIO_SOLICITUD;msg=P1-toyjef-5,tipo=ESTADO,persona=-
-119;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-5,resultado=ESTADO,aforo=3/10
-120;P1;ENVIO_SOLICITUD;msg=P1-toyjef-6,tipo=ENTRADA,persona=durante-caida
-121;P1;SOLICITUD_FALLIDA;msg=P1-toyjef-6,error=ConnectException: Connection refused
-122;P1;COORDINADOR_NO_DISPONIBLE;ConnectException: Connection refused
-131;P1;COORDINADOR_RECUPERADO;coordinador=127.0.0.1:5000
-132;P1;ENVIO_SOLICITUD;msg=P1-toyjef-7,tipo=ESTADO,persona=-
-135;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-7,resultado=ESTADO,aforo=0/10
-136;P1;ENVIO_SOLICITUD;msg=P1-toyjef-8,tipo=SALIDA,persona=pedro
-141;P1;RESPUESTA_RECIBIDA;msg=P1-toyjef-8,resultado=RECHAZADA,aforo=0/10
+9;P1;COORDINADOR_CONECTADO;coordinador=127.0.0.1:5000
+17;P1;ENVIO_SOLICITUD;msg=P1-toypav-1,tipo=ENTRADA,persona=ana
+21;P1;RESPUESTA_RECIBIDA;msg=P1-toypav-1,resultado=AUTORIZADA,aforo=1/10
+31;P1;ENVIO_SOLICITUD;msg=P1-toypav-2,tipo=ENTRADA,persona=pedro
+40;P1;RESPUESTA_RECIBIDA;msg=P1-toypav-2,resultado=AUTORIZADA,aforo=4/10
+50;P1;ENVIO_SOLICITUD;msg=P1-toypav-3,tipo=SALIDA,persona=ana
+54;P1;RESPUESTA_RECIBIDA;msg=P1-toypav-3,resultado=AUTORIZADA,aforo=2/10
+97;P1;ENVIO_SOLICITUD;msg=P1-toypav-4,tipo=ENTRADA,persona=pedro2
+98;P1;SOLICITUD_FALLIDA;msg=P1-toypav-4,error=ConnectException: Connection refused
+99;P1;COORDINADOR_NO_DISPONIBLE;ConnectException: Connection refused
+108;P1;COORDINADOR_RECUPERADO;coordinador=127.0.0.1:5000
+122;P1;ENVIO_SOLICITUD;msg=P1-toypav-5,tipo=SALIDA,persona=pedro
+126;P1;RESPUESTA_RECIBIDA;msg=P1-toypav-5,resultado=RECHAZADA,aforo=0/10

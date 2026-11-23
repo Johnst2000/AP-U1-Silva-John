@@ -1,71 +1,76 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10.5pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
-\usepackage[margin=2.2cm]{geometry}
-\usepackage{booktabs,longtable,array,xcolor}
-\usepackage{listings}
-\lstset{basicstyle=\ttfamily\scriptsize,breaklines=true,columns=fullflexible,frame=single}
-\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\usepackage[margin=2cm]{geometry}
+\usepackage{booktabs,array,graphicx,caption}
+\captionsetup{font=small,skip=2pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\newcommand{\capt}[3]{\begin{figure}[ht!]\centering\includegraphics[width=#3\linewidth]{capturas/#1.png}\caption{#2}\end{figure}}
 \begin{document}
 {\large\textbf{AP-U1 -- AforoSeguro: control de aforo distribuido}}\\
 John Jairo Silva Trivi\~no -- UTEQ, Ingenier\'ia de Software, 7.º A -- Aplicaciones Distribuidas (ISR-701)\\
 Repositorio: \texttt{https://github.com/Johnst2000/AP-U1-Silva-John}
 
 \section{Sistema}
-Un coordinador TCP lleva el contador global (aforo m\'aximo 10) y tres puertas (P1, P2, P3), procesos Java 21 independientes, le env\'ian entradas y salidas. Cada mensaje lleva un token; cada proceso tiene un reloj de Lamport y un log \texttt{lamport;id\_proceso;evento;detalle}. Las puertas env\'ian latidos cada 2 s y el coordinador declara desconectada una puerta tras 6 s sin se\~nales.
+Un coordinador TCP lleva el contador global (aforo m\'aximo 10) y tres puertas (P1, P2, P3), procesos Java 21 independientes, le env\'ian entradas y salidas. Cada mensaje lleva un token; cada proceso tiene un reloj de Lamport y un log \texttt{lamport;id\_proceso;evento;detalle}. Las puertas env\'ian latidos cada 2 s y el coordinador declara desconectada una puerta tras 6 s sin se\~nales. Las capturas son salidas de consola de una ejecuci\'on real (Java 21, Linux, todo en \texttt{127.0.0.1}); los logs de esa ejecuci\'on est\'an en \texttt{logs/}.
 
 \section{Escenarios E0--E6}
-Cada fila resume lo observado; los textos entre comillas son l\'ineas reales de los logs del repositorio.
-
-\footnotesize
-\begin{longtable}{p{0.9cm}p{4.6cm}p{4.2cm}p{5.2cm}}
+\small
+\begin{tabular}{@{}p{0.8cm}p{5.2cm}p{1.1cm}p{8.4cm}@{}}
 \toprule
-\textbf{Esc.} & \textbf{Qu\'e se hizo} & \textbf{Evidencia (log)} & \textbf{Interpretaci\'on}\\\midrule\endhead
-E0 & Estado inicial: Java 21,\allowbreak{} \texttt{config.properties} (aforo 10,\allowbreak{} puerto 5000,\allowbreak{} latido 2 s,\allowbreak{} timeout 6 s),\allowbreak{} tokens P1--P3. & \texttt{INICIO\_PROCESO;\allowbreak{}modo=normal,\allowbreak{}aforoMaximo=10,\allowbreak{}puerto=5000} & Red local (127.0.0.1);\allowbreak{} todo corre en una sola m\'aquina.\\
-E1 & Se inicia el coordinador y luego P1,\allowbreak{} P2 y P3. & \texttt{PUERTA\_CONECTADA;\allowbreak{}puerta=P3},\allowbreak{} \texttt{P1},\allowbreak{} \texttt{P2} & Las tres puertas se registran con token v\'alido.\\
-E2 & Entradas y salidas normales desde las tres puertas;\allowbreak{} una entrada con token falso. & \texttt{DECISION;\allowbreak{}...aforo=4/10} luego \texttt{aforo=2/10};\allowbreak{} \texttt{AUTENTICACION\_FALLIDA;\allowbreak{}origen=P1,\allowbreak{}...,\allowbreak{}motivo=token\_invalido} & El aforo sube y baja correctamente;\allowbreak{} el token inv\'alido se rechaza,\allowbreak{} se registra y no cambia el aforo.\\
-E3 & 40 entradas simult\'aneas,\allowbreak{} 5 rondas,\allowbreak{} modo normal e inseguro (cifras en la secci\'on 3). & \texttt{normal: 10 autorizadas en 5/5 rondas};\allowbreak{} \texttt{inseguro: 40 autorizadas,\allowbreak{} 5/5 superan el aforo} & La exclusi\'on mutua garantiza el l\'imite;\allowbreak{} sin ella se pierde el control.\\
-E4 & Se termin\'o el proceso de P2 y luego se volvi\'o a iniciar. & \texttt{PUERTA\_DESCONECTADA;\allowbreak{}puerta=P2,\allowbreak{}sinLatidos\_ms=6225};\allowbreak{} \texttt{PUERTA\_REACTIVADA;\allowbreak{}puerta=P2} & La falla se detecta pasados los 6 s y la puerta reactivada vuelve a operar (autoriz\'o una entrada).\\
-E5 & Se termin\'o el coordinador con 3 personas dentro y se reinici\'o 5 s despu\'es. & \texttt{COORDINADOR\_NO\_DISPONIBLE};\allowbreak{}\ \texttt{COORDINADOR\_RECUPERADO};\allowbreak{}\ \texttt{SALIDA...RECHAZADA,\allowbreak{}motivo=AFORO\_VACIO,\allowbreak{}aforo=0/10} & Sin coordinador las puertas rechazan todo;\allowbreak{} al volver,\allowbreak{} el contador empieza en 0 y se pierde el estado. No hay elecci\'on de coordinador.\\
-E6 & \texttt{OrdenTotal} ordena los logs por (Lamport,\allowbreak{} proceso). & 89 eventos,\allowbreak{} 26 pares env\'io$\to$recepci\'on,\allowbreak{} 0 violaciones & Dos pares explicados en la secci\'on 4.\\
+\textbf{Esc.} & \textbf{Qu\'e se hizo} & \textbf{Captura} & \textbf{Interpretaci\'on}\\\midrule
+E0 & Estado inicial: versi\'on de Java y \texttt{config.properties} (aforo 10, puerto 5000, latido 2 s, timeout 6 s). & Fig.~1 & Entorno y par\'ametros de partida; red local \texttt{127.0.0.1}.\\
+E1 & Se inicia el coordinador y luego P1, P2 y P3. & Fig.~2 & Las tres puertas se registran con su token (\texttt{PUERTA\_CONECTADA}) y el aforo parte en 0/10.\\
+E2 & Entradas y salidas desde las tres puertas; un mensaje con token falso enviado a mano. & Fig.~3 & El aforo sube y baja correctamente (termina en 2/10). El token falso se rechaza, se registra \texttt{AUTENTICACION\_FALLIDA} y no cambia el aforo.\\
+E3 & 40 entradas simult\'aneas, 5 rondas, modo normal e inseguro (secci\'on 3). & Fig.~4 & La exclusi\'on mutua mantiene el l\'imite; sin ella se supera.\\
+E4 & Se termin\'o el proceso de P2 a la fuerza y luego se reinici\'o. & Fig.~5 & Se detect\'o a los 6310 ms sin latidos; al volver, P2 se reactiv\'o y autoriz\'o una entrada.\\
+E5 & Se termin\'o el coordinador, se intent\'o operar y se reinici\'o. & Fig.~6 & Sin coordinador las puertas rechazan todo; al volver, el contador empieza en 0 y se pierde el estado (limitaci\'on, sin elecci\'on de coordinador).\\
+E6 & \texttt{OrdenTotal} ordena los logs por (Lamport, proceso). & Fig.~7 & 77 eventos, 20 pares env\'io$\to$recepci\'on, 0 violaciones (secci\'on 4).\\
 \bottomrule
-\end{longtable}
+\end{tabular}
 \normalsize
 
-\textbf{Capturas.} Insertar aqu\'i las capturas de consola de cada escenario (comandos del README): \textcolor{red}{[pendiente: capturas de E0--E6 tomadas por el autor]}.
+\capt{E0}{E0: estado inicial y configuraci\'on.}{0.3}
+\capt{E1}{E1: coordinador y las tres puertas conectadas.}{0.73}
+\capt{E2}{E2: operaciones normales y rechazo de un token falso.}{1}
 
 \section{Cifras de E3}
 Aforo m\'aximo 10, 40 solicitudes simult\'aneas por ronda desde las tres puertas, 5 rondas por modo (\texttt{java -cp out PruebaCarga}).
-
 \begin{center}
 \begin{tabular}{lrrrr}
 \toprule
-Modo & Rondas & Autorizadas & Superan aforo & Contador final m\'ax.\\\midrule
+Modo & Rondas & Autorizadas por ronda & Superan el aforo & Contador final m\'ax.\\\midrule
 normal & 5 & 10 (todas) & 0/5 & 10\\
-inseguro & 5 & 40 (todas) & 5/5 & 7\\\bottomrule
+inseguro & 5 & 40 (todas) & 5/5 & 2\\\bottomrule
 \end{tabular}
 \end{center}
-En modo inseguro el contador final (entre 2 y 7) es menor que las autorizaciones: se pierden actualizaciones. Con una pausa de 0~$\mu$s entre leer y escribir no se observ\'o la carrera en 5 rondas; por eso la configuraci\'on usa 200~$\mu$s (\texttt{inseguro.ventana.us}), una ampliaci\'on deliberada de la ventana. Todo se prob\'o en \texttt{localhost}; 5 rondas bastan para mostrar la diferencia, no para estimar una probabilidad.
+En modo inseguro el contador final (2) es menor que las 40 autorizaciones: se pierden actualizaciones. Con una pausa de 0~$\mu$s entre leer y escribir no se observ\'o la carrera en 5 rondas; por eso la configuraci\'on usa 200~$\mu$s (\texttt{inseguro.ventana.us}), una ampliaci\'on deliberada de la ventana. Cinco rondas muestran la diferencia, no estiman una probabilidad.
+
+\capt{E3}{E3: comparaci\'on de modos.}{0.72}
+\capt{E4}{E4: detecci\'on de la ca\'ida de P2 y reactivaci\'on.}{0.48}
+\capt{E5}{E5: ca\'ida y reinicio del coordinador.}{0.83}
 
 \section{Dos pares causales de E6}
 Del archivo \texttt{logs/orden\_total.log} (posici\'on = n.º de l\'inea):
-\begin{center}
+\begin{center}\small
 \begin{tabular}{llll}
 \toprule
 Par & Evento A (causa) & Evento B (efecto) & Posiciones\\\midrule
-1 & \texttt{P1 ENVIO\_SOLICITUD}, L=16 & \texttt{COORD RECEPCION\_SOLICITUD}, L=21 & 22 y 28\\
-2 & \texttt{COORD ENVIO\_RESPUESTA}, L=23 & \texttt{P1 RESPUESTA\_RECIBIDA}, L=24 & 31 y 32\\\bottomrule
+1 & \texttt{P1 ENVIO\_SOLICITUD}, L=31 & \texttt{COORD RECEPCION\_SOLICITUD}, L=37 & 24 y 29\\
+2 & \texttt{COORD ENVIO\_RESPUESTA}, L=23 & \texttt{P2 RESPUESTA\_RECIBIDA}, L=24 & 21 y 22\\\bottomrule
 \end{tabular}
 \end{center}
-Ambos pares corresponden al mensaje \texttt{P1-toyjef-2} (entrada de ``pedro''). En los dos, $L(A)<L(B)$ y A aparece antes que B en el orden total. Adem\'as, \texttt{OrdenTotal} verific\'o todos los mensajes (26 pares) sin violaciones. Eventos concurrentes, como el \texttt{ESTADO} de P3 (L=27) y la \texttt{SALIDA} de P2 (L=31), quedan ordenados solo por convenci\'on.
+El par 1 es el mensaje \texttt{P1-toypav-2} (entrada de ``pedro''); el par 2, \texttt{P2-toypav-1} (entrada de ``luis''). En ambos $L(A)<L(B)$ y A aparece antes que B en el orden total. \texttt{OrdenTotal} verific\'o todos los mensajes (20 pares) sin violaciones; eventos concurrentes quedan ordenados solo por convenci\'on (empate por id de proceso).
+
+\capt{E6}{E6: orden total y verificaci\'on causal.}{0.57}
 
 \section{Preguntas de an\'alisis}
-\textbf{1. ¿Qu\'e ocurre sin exclusi\'on mutua y por qu\'e?} Varias solicitudes leen el mismo valor del contador, todas ven espacio y todas son autorizadas; luego cada una escribe \texttt{valor+1}, as\'i que se autorizan 40 entradas y el contador queda en 2--7 (E3). Con exclusi\'on mutua, comprobar y actualizar es una sola operaci\'on at\'omica.
+\textbf{1. ¿Qu\'e ocurre sin exclusi\'on mutua y por qu\'e?} Varias solicitudes leen el mismo valor del contador, todas ven espacio y todas son autorizadas; luego cada una escribe \texttt{valor+1}, as\'i que se autorizan 40 entradas y el contador queda en 2 (E3). Con exclusi\'on mutua, comprobar y actualizar es una sola operaci\'on at\'omica.
 
-\textbf{2. ¿C\'omo se detecta una puerta ca\'ida y qu\'e l\'imites tiene?} Con latidos cada 2 s y un temporizador de 6 s: sin latidos, el coordinador registra \texttt{PUERTA\_DESCONECTADA} (E4: 6225 ms). Un timeout no distingue una puerta ca\'ida de una red lenta, y la detecci\'on tarda hasta 6 s m\'as el ciclo de revisi\'on (500 ms).
+\textbf{2. ¿C\'omo se detecta una puerta ca\'ida y qu\'e l\'imites tiene?} Con latidos cada 2 s y un temporizador de 6 s: sin latidos, el coordinador registra \texttt{PUERTA\_DESCONECTADA} (E4: 6310 ms). Un timeout no distingue una puerta ca\'ida de una red lenta, y la detecci\'on tarda hasta 6 s m\'as el ciclo de revisi\'on (500 ms).
 
-\textbf{3. ¿Qu\'e consecuencias tiene la ca\'ida del coordinador?} Es punto \'unico de fallo: las puertas rechazan todo (pol\'itica de cerrar ante la duda), el contador se pierde porque solo est\'a en memoria y al reiniciar vale 0, de modo que podr\'ian entrar m\'as personas que el aforo real. No se implement\'o elecci\'on de l\'ider ni persistencia (E5).
+\textbf{3. ¿Qu\'e consecuencias tiene la ca\'ida del coordinador?} Es punto \'unico de fallo: las puertas rechazan todo (cierran ante la duda), el contador se pierde porque solo est\'a en memoria y al reiniciar vale 0, de modo que podr\'ian entrar m\'as personas que el aforo real. No se implement\'o elecci\'on de l\'ider ni persistencia (E5).
 
 \textbf{4. ¿Qu\'e garantiza el reloj de Lamport y qu\'e no?} Si A caus\'o B entonces $L(A)<L(B)$ y el orden total lo respeta (E6). Lo inverso no vale: $L(A)<L(B)$ no implica causalidad, y las marcas no representan el tiempo real ni sobreviven a un reinicio.
 \end{document}
