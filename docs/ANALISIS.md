@@ -3,7 +3,7 @@
 **E3 carga (40 entradas simultáneas, aforo 10, 5 rondas).** Modo normal: siempre exactamente 10 autorizadas.
 Modo inseguro: el aforo se superó en 5 de 5 rondas y el contador final quedó por debajo de las autorizadas
 (actualizaciones perdidas). Con pausa 0 µs entre leer y escribir no se observó la carrera, por eso el valor por
-defecto es 200 µs (`inseguro.ventana.us`). Detalle: `docs/evidencias/E3-prueba-de-carga.txt` y `E3b-*`.
+defecto es 200 µs (`inseguro.ventana.us`). Se obtiene con `java -cp out PruebaCarga`; los registros de cada ronda quedan en `logs/carga-*`.
 
 **E5 caída del coordinador.** Sin coordinador las puertas rechazan todo (no pueden saber el aforo) y siguen
 intentando reconectar. No hay elección de coordinador. Al reiniciarlo el contador vuelve a 0 (solo está en memoria),
