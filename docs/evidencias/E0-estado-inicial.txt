@@ -1,0 +1,30 @@
+ESCENARIO E0 - Estado inicial de los procesos y configuración de red
+Configuración efectiva, versión de Java y disponibilidad de los puertos TCP antes de arrancar nada.
+Ejecutado el 2026-11-23. Cada línea lleva la hora real (HH:mm:ss.SSS) y el proceso que la produjo.
+----------------------------------------------------------------------------------------------------
+08:42:15.360 [ESCENARIO] Java: 21.0.12.1 (Ubuntu)
+08:42:15.365 [ESCENARIO] Sistema: Linux 6.18.44-fc-v726 amd64
+08:42:15.366 [ESCENARIO] Directorio de trabajo: /home/claude/work/AforoSeguro
+08:42:15.372 [ESCENARIO] Configuración leída de config.properties (los tokens no se muestran):
+08:42:15.382 [ESCENARIO]   aforo.maximo=10
+08:42:15.382 [ESCENARIO]   carga.rondas=5
+08:42:15.382 [ESCENARIO]   carga.solicitudes=40
+08:42:15.382 [ESCENARIO]   coordinador.bind=127.0.0.1
+08:42:15.382 [ESCENARIO]   coordinador.host=127.0.0.1
+08:42:15.382 [ESCENARIO]   coordinador.puerto=5000
+08:42:15.382 [ESCENARIO]   heartbeat.intervalo.ms=2000
+08:42:15.382 [ESCENARIO]   heartbeat.timeout.ms=6000
+08:42:15.382 [ESCENARIO]   inseguro.ventana.us=200
+08:42:15.382 [ESCENARIO]   logs.dir=logs
+08:42:15.382 [ESCENARIO]   modo=normal
+08:42:15.382 [ESCENARIO]   protocolo=TCP
+08:42:15.382 [ESCENARIO]   puertas.numero=3
+08:42:15.382 [ESCENARIO]   reloj.logico=lamport
+08:42:15.382 [ESCENARIO]   socket.conexion.timeout.ms=1500
+08:42:15.382 [ESCENARIO]   socket.lectura.timeout.ms=3000
+08:42:15.382 [ESCENARIO]   token.P1=(definido, 24 caracteres)
+08:42:15.382 [ESCENARIO]   token.P2=(definido, 24 caracteres)
+08:42:15.383 [ESCENARIO]   token.P3=(definido, 24 caracteres)
+08:42:15.388 [ESCENARIO] Puerto TCP 5000: libre
+08:42:15.388 [ESCENARIO] Puerto TCP 5001: libre
+08:42:15.395 [ESCENARIO] Procesos previstos: Coordinador en 127.0.0.1:5000 y puertas [P1, P2, P3], cada una como proceso Java independiente.

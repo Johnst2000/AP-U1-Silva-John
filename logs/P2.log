@@ -1,0 +1,12 @@
+1;P2;INICIO_PROCESO;puerta=P2,coordinador=127.0.0.1:5000
+13;P2;COORDINADOR_CONECTADO;coordinador=127.0.0.1:5000
+14;P2;ENVIO_SOLICITUD;msg=P2-toyjef-1,tipo=ENTRADA,persona=luis
+18;P2;RESPUESTA_RECIBIDA;msg=P2-toyjef-1,resultado=AUTORIZADA,aforo=2/10
+31;P2;ENVIO_SOLICITUD;msg=P2-toyjef-2,tipo=SALIDA,persona=luis
+35;P2;RESPUESTA_RECIBIDA;msg=P2-toyjef-2,resultado=AUTORIZADA,aforo=3/10
+1;P2;INICIO_PROCESO;puerta=P2,coordinador=127.0.0.1:5000
+108;P2;COORDINADOR_CONECTADO;coordinador=127.0.0.1:5000
+109;P2;ENVIO_SOLICITUD;msg=P2-toyjf2-1,tipo=ENTRADA,persona=tras-reactivacion
+113;P2;RESPUESTA_RECIBIDA;msg=P2-toyjf2-1,resultado=AUTORIZADA,aforo=3/10
+115;P2;COORDINADOR_NO_DISPONIBLE;ConnectException: Connection refused
+139;P2;COORDINADOR_RECUPERADO;coordinador=127.0.0.1:5000

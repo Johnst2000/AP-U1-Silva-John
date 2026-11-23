@@ -1,0 +1,27 @@
+ESCENARIO E3 - Prueba de carga con modo normal e inseguro
+PruebaCarga lanza un coordinador nuevo por ronda y envía solicitudes de entrada simultáneas desde P1, P2 y P3.
+Ejecutado el 2026-11-23. Cada línea lleva la hora real (HH:mm:ss.SSS) y el proceso que la produjo.
+----------------------------------------------------------------------------------------------------
+08:42:20.136 [CARGA] === PruebaCarga - aforo máximo 10, 40 solicitudes de entrada por ronda, 5 rondas, ventana del modo inseguro 200 us ===
+08:42:20.140 [CARGA] Sin salidas: si se piden más entradas que el aforo, solo 10 deben ser autorizadas.
+08:42:20.140 [CARGA] 
+08:42:20.147 [CARGA] --- Modo normal ---
+08:42:21.192 [CARGA] Ronda 1: solicitadas=40 autorizadas=10 rechazadas=30 contador final del coordinador=10 -> aforo respetado
+08:42:22.129 [CARGA] Ronda 2: solicitadas=40 autorizadas=10 rechazadas=30 contador final del coordinador=10 -> aforo respetado
+08:42:23.126 [CARGA] Ronda 3: solicitadas=40 autorizadas=10 rechazadas=30 contador final del coordinador=10 -> aforo respetado
+08:42:24.112 [CARGA] Ronda 4: solicitadas=40 autorizadas=10 rechazadas=30 contador final del coordinador=10 -> aforo respetado
+08:42:25.076 [CARGA] Ronda 5: solicitadas=40 autorizadas=10 rechazadas=30 contador final del coordinador=10 -> aforo respetado
+08:42:25.076 [CARGA] 
+08:42:25.078 [CARGA] --- Modo inseguro ---
+08:42:26.056 [CARGA] Ronda 1: solicitadas=40 autorizadas=40 rechazadas=0 contador final del coordinador=2 -> SUPERÓ EL AFORO (40 > 10)
+08:42:26.989 [CARGA] Ronda 2: solicitadas=40 autorizadas=40 rechazadas=0 contador final del coordinador=5 -> SUPERÓ EL AFORO (40 > 10)
+08:42:27.944 [CARGA] Ronda 3: solicitadas=40 autorizadas=40 rechazadas=0 contador final del coordinador=2 -> SUPERÓ EL AFORO (40 > 10)
+08:42:28.868 [CARGA] Ronda 4: solicitadas=40 autorizadas=40 rechazadas=0 contador final del coordinador=6 -> SUPERÓ EL AFORO (40 > 10)
+08:42:29.780 [CARGA] Ronda 5: solicitadas=40 autorizadas=40 rechazadas=0 contador final del coordinador=3 -> SUPERÓ EL AFORO (40 > 10)
+08:42:29.780 [CARGA] 
+08:42:29.780 [CARGA] === Comparación ===
+08:42:29.781 [CARGA] Modo       Rondas   Solicitadas  Aut. mín.    Aut. máx.    Rondas > aforo   Contador final máx.
+08:42:29.792 [CARGA] normal     5        40           10           10           0/5              10
+08:42:29.792 [CARGA] inseguro   5        40           40           40           5/5              6
+08:42:29.792 [CARGA] 
+08:42:29.792 [CARGA] Modo normal: en todas las rondas se autorizaron exactamente 10 entradas.

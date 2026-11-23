@@ -1,0 +1,12 @@
+1;P3;INICIO_PROCESO;puerta=P3,coordinador=127.0.0.1:5000
+9;P3;COORDINADOR_CONECTADO;coordinador=127.0.0.1:5000
+10;P3;ENVIO_SOLICITUD;msg=P3-toyjef-1,tipo=ENTRADA,persona=maria
+21;P3;RESPUESTA_RECIBIDA;msg=P3-toyjef-1,resultado=AUTORIZADA,aforo=3/10
+27;P3;ENVIO_SOLICITUD;msg=P3-toyjef-2,tipo=ESTADO,persona=-
+37;P3;RESPUESTA_RECIBIDA;msg=P3-toyjef-2,resultado=ESTADO,aforo=3/10
+80;P3;ENVIO_SOLICITUD;msg=P3-toyjef-3,tipo=ESTADO,persona=-
+83;P3;RESPUESTA_RECIBIDA;msg=P3-toyjef-3,resultado=ESTADO,aforo=2/10
+119;P3;COORDINADOR_NO_DISPONIBLE;ConnectException: Connection refused
+120;P3;ENVIO_SOLICITUD;msg=P3-toyjef-4,tipo=ENTRADA,persona=durante-caida-2
+121;P3;SOLICITUD_FALLIDA;msg=P3-toyjef-4,error=ConnectException: Connection refused
+130;P3;COORDINADOR_RECUPERADO;coordinador=127.0.0.1:5000

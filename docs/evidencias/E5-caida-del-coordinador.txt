@@ -1,0 +1,32 @@
+ESCENARIO E5 - Caída del coordinador
+Se termina el proceso del Coordinador con personas dentro, se intenta operar desde las puertas y luego se inicia un coordinador nuevo.
+Ejecutado el 2026-11-23. Cada línea lleva la hora real (HH:mm:ss.SSS) y el proceso que la produjo.
+----------------------------------------------------------------------------------------------------
+08:42:39.966 [ESCENARIO -> P1] estado
+08:42:39.974 [P1] P1 -> ESTADO: aforo 3/10 (entradasAutorizadas=5,entradasRechazadas=0,salidasAutorizadas=2,salidasRechazadas=0,modo=normal,contador=3)
+08:42:40.466 [ESCENARIO] Se termina el proceso del Coordinador a la fuerza (simula su caída).
+08:42:40.466 [ESCENARIO] terminando a la fuerza el proceso COORD
+08:42:40.746 [P2] [L=115] P2 COORDINADOR_NO_DISPONIBLE  ConnectException: Connection refused
+08:42:40.772 [ESCENARIO -> P1] entrada durante-caida
+08:42:40.779 [P1] [L=122] P1 COORDINADOR_NO_DISPONIBLE  ConnectException: Connection refused
+08:42:40.783 [P1] P1 -> ENTRADA durante-caida: RECHAZADA, sin respuesta del coordinador (COORDINADOR_NO_DISPONIBLE: Connection refused)
+08:42:41.864 [P3] [L=119] P3 COORDINADOR_NO_DISPONIBLE  ConnectException: Connection refused
+08:42:42.973 [ESCENARIO -> P3] entrada durante-caida-2
+08:42:42.979 [P3] P3 -> ENTRADA durante-caida-2: RECHAZADA, sin respuesta del coordinador (COORDINADOR_NO_DISPONIBLE: Connection refused)
+08:42:45.475 [ESCENARIO] Se inicia un coordinador nuevo en el mismo puerto (no hay elección automática: lo hace una persona).
+08:42:45.571 [COORD-2] [L=1] COORD INICIO_PROCESO  modo=normal,aforoMaximo=10,puerto=5000,puertas=P1/P2/P3
+08:42:45.575 [COORD-2] === AforoSeguro - Coordinador - modo normal - aforo máximo 10 - escuchando en 127.0.0.1:5000 ===
+08:42:45.877 [COORD-2] [L=125] COORD PUERTA_CONECTADA  puerta=P3
+08:42:45.880 [COORD-2] [L=127] COORD PUERTA_CONECTADA  puerta=P1
+08:42:45.880 [COORD-2]     >> Aforo 0/10 | Conectadas: P3 | Desconectadas: P1 P2
+08:42:45.880 [COORD-2]     >> Aforo 0/10 | Conectadas: P1 P3 | Desconectadas: P2
+08:42:45.888 [P1] [L=131] P1 COORDINADOR_RECUPERADO  coordinador=127.0.0.1:5000
+08:42:45.889 [P3] [L=130] P3 COORDINADOR_RECUPERADO  coordinador=127.0.0.1:5000
+08:42:46.486 [ESCENARIO -> P1] estado
+08:42:46.504 [P1] P1 -> ESTADO: aforo 0/10 (entradasAutorizadas=0,entradasRechazadas=0,salidasAutorizadas=0,salidasRechazadas=0,modo=normal,contador=0)
+08:42:46.750 [COORD-2] [L=136] COORD PUERTA_CONECTADA  puerta=P2
+08:42:46.752 [COORD-2]     >> Aforo 0/10 | Conectadas: P1 P2 P3 | Desconectadas: -
+08:42:46.752 [P2] [L=139] P2 COORDINADOR_RECUPERADO  coordinador=127.0.0.1:5000
+08:42:46.986 [ESCENARIO -> P1] salida pedro
+08:42:47.005 [COORD-2] [L=139] COORD DECISION  msg=P1-toyjef-8,puerta=P1,tipo=SALIDA,persona=pedro,resultado=RECHAZADA,motivo=AFORO_VACIO,aforo=0/10
+08:42:47.006 [P1] P1 -> SALIDA pedro: RECHAZADA (aforo 0/10, motivo AFORO_VACIO)

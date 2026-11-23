@@ -1,0 +1,27 @@
+ESCENARIO E6 - Orden total de eventos con relojes de Lamport
+OrdenTotal lee los registros de todos los procesos, ordena por (Lamport, id de proceso) y comprueba la causalidad.
+Ejecutado el 2026-11-23. Cada línea lleva la hora real (HH:mm:ss.SSS) y el proceso que la produjo.
+----------------------------------------------------------------------------------------------------
+08:42:49.329 [ORDEN-TOTAL] Archivos leídos: [P1.log, P2.log, P3.log, coordinador.log]
+08:42:49.335 [ORDEN-TOTAL] Eventos ordenados: 89 (líneas inválidas: 0)
+08:42:49.336 [ORDEN-TOTAL] Orden total escrito en: logs/orden_total.log
+08:42:49.362 [ORDEN-TOTAL] 
+08:42:49.362 [ORDEN-TOTAL] Verificación de la relación causal (envío -> recepción):
+08:42:49.366 [ORDEN-TOTAL]   Solicitudes puerta -> coordinador comprobadas: 13
+08:42:49.366 [ORDEN-TOTAL]   Respuestas coordinador -> puerta comprobadas:  13
+08:42:49.366 [ORDEN-TOTAL]   Solicitudes enviadas que nunca llegaron al coordinador: 2
+08:42:49.366 [ORDEN-TOTAL]   Violaciones del orden causal: 0
+08:42:49.366 [ORDEN-TOTAL] 
+08:42:49.366 [ORDEN-TOTAL] Pares causalmente relacionados (ejemplos):
+08:42:49.371 [ORDEN-TOTAL]   Par 1 (msg P3-toyjef-2):
+08:42:49.372 [ORDEN-TOTAL]     envío     L=27 P3 ENVIO_SOLICITUD  -> posición 33 en el orden total
+08:42:49.372 [ORDEN-TOTAL]     recepción L=35 COORD RECEPCION_SOLICITUD  -> posición 39 en el orden total
+08:42:49.377 [ORDEN-TOTAL]     27 < 35 y posición 33 < 39: el orden total respeta la causalidad
+08:42:49.377 [ORDEN-TOTAL]   Par 2 (msg P1-toyjef-5):
+08:42:49.377 [ORDEN-TOTAL]     envío     L=116 P1 ENVIO_SOLICITUD  -> posición 65 en el orden total
+08:42:49.377 [ORDEN-TOTAL]     recepción L=117 COORD RECEPCION_SOLICITUD  -> posición 66 en el orden total
+08:42:49.377 [ORDEN-TOTAL]     116 < 117 y posición 65 < 66: el orden total respeta la causalidad
+08:42:49.377 [ORDEN-TOTAL]   Par 3 (msg P3-toyjef-2):
+08:42:49.377 [ORDEN-TOTAL]     envío     L=36 COORD ENVIO_RESPUESTA  -> posición 41 en el orden total
+08:42:49.377 [ORDEN-TOTAL]     recepción L=37 P3 RESPUESTA_RECIBIDA  -> posición 43 en el orden total
+08:42:49.377 [ORDEN-TOTAL]     36 < 37 y posición 41 < 43: el orden total respeta la causalidad

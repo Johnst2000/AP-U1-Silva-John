@@ -1,0 +1,50 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=44913 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+[L=1] COORD INICIO_PROCESO  modo=inseguro,aforoMaximo=10,puerto=5001,puertas=P1/P2/P3
+=== AforoSeguro - Coordinador - modo inseguro - aforo máximo 10 - escuchando en 127.0.0.1:5001 ===
+ATENCIÓN: modo inseguro, el contador no está protegido por exclusión mutua.
+[L=5] COORD PUERTA_CONECTADA  puerta=P1
+[L=6] COORD PUERTA_CONECTADA  puerta=P2
+    >> Aforo 0/10 | Conectadas: P1 P2 | Desconectadas: P3
+    >> Aforo 0/10 | Conectadas: P1 P2 | Desconectadas: P3
+[L=10] COORD PUERTA_CONECTADA  puerta=P3
+    >> Aforo 0/10 | Conectadas: P1 P2 P3 | Desconectadas: -
+[L=55] COORD DECISION  msg=P3-toyjg9-1,puerta=P3,tipo=ENTRADA,persona=persona-14,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=58] COORD DECISION  msg=P3-toyjg9-2,puerta=P3,tipo=ENTRADA,persona=persona-17,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=56] COORD DECISION  msg=P2-toyjg9-1,puerta=P2,tipo=ENTRADA,persona=persona-16,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=61] COORD DECISION  msg=P2-toyjg9-2,puerta=P2,tipo=ENTRADA,persona=persona-19,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=63] COORD DECISION  msg=P1-toyjg9-2,puerta=P1,tipo=ENTRADA,persona=persona-18,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=65] COORD DECISION  msg=P3-toyjg9-3,puerta=P3,tipo=ENTRADA,persona=persona-20,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=67] COORD DECISION  msg=P1-toyjg9-3,puerta=P1,tipo=ENTRADA,persona=persona-21,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=69] COORD DECISION  msg=P2-toyjg9-3,puerta=P2,tipo=ENTRADA,persona=persona-22,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=71] COORD DECISION  msg=P3-toyjg9-4,puerta=P3,tipo=ENTRADA,persona=persona-23,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=73] COORD DECISION  msg=P1-toyjg9-4,puerta=P1,tipo=ENTRADA,persona=persona-24,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=75] COORD DECISION  msg=P2-toyjg9-4,puerta=P2,tipo=ENTRADA,persona=persona-25,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=78] COORD DECISION  msg=P1-toyjg9-1,puerta=P1,tipo=ENTRADA,persona=persona-15,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=80] COORD DECISION  msg=P2-toyjg9-5,puerta=P2,tipo=ENTRADA,persona=persona-28,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=82] COORD DECISION  msg=P3-toyjg9-6,puerta=P3,tipo=ENTRADA,persona=persona-29,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=84] COORD DECISION  msg=P1-toyjg9-6,puerta=P1,tipo=ENTRADA,persona=persona-30,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=86] COORD DECISION  msg=P3-toyjg9-7,puerta=P3,tipo=ENTRADA,persona=persona-32,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=76] COORD DECISION  msg=P3-toyjg9-5,puerta=P3,tipo=ENTRADA,persona=persona-26,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=89] COORD DECISION  msg=P2-toyjg9-6,puerta=P2,tipo=ENTRADA,persona=persona-31,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=91] COORD DECISION  msg=P1-toyjg9-7,puerta=P1,tipo=ENTRADA,persona=persona-33,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=93] COORD DECISION  msg=P2-toyjg9-7,puerta=P2,tipo=ENTRADA,persona=persona-34,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=95] COORD DECISION  msg=P3-toyjg9-8,puerta=P3,tipo=ENTRADA,persona=persona-35,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=97] COORD DECISION  msg=P1-toyjg9-8,puerta=P1,tipo=ENTRADA,persona=persona-36,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=98] COORD DECISION  msg=P2-toyjg9-8,puerta=P2,tipo=ENTRADA,persona=persona-37,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=101] COORD DECISION  msg=P1-toyjg9-9,puerta=P1,tipo=ENTRADA,persona=persona-39,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=102] COORD DECISION  msg=P3-toyjg9-9,puerta=P3,tipo=ENTRADA,persona=persona-38,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=105] COORD DECISION  msg=P2-toyjg9-9,puerta=P2,tipo=ENTRADA,persona=persona-1,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=107] COORD DECISION  msg=P1-toyjg9-10,puerta=P1,tipo=ENTRADA,persona=persona-0,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=109] COORD DECISION  msg=P1-toyjg9-11,puerta=P1,tipo=ENTRADA,persona=persona-3,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=111] COORD DECISION  msg=P1-toyjg9-5,puerta=P1,tipo=ENTRADA,persona=persona-27,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=113] COORD DECISION  msg=P3-toyjg9-11,puerta=P3,tipo=ENTRADA,persona=persona-5,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=115] COORD DECISION  msg=P1-toyjg9-12,puerta=P1,tipo=ENTRADA,persona=persona-6,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=117] COORD DECISION  msg=P2-toyjg9-11,puerta=P2,tipo=ENTRADA,persona=persona-7,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=118] COORD DECISION  msg=P3-toyjg9-12,puerta=P3,tipo=ENTRADA,persona=persona-8,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=121] COORD DECISION  msg=P2-toyjg9-10,puerta=P2,tipo=ENTRADA,persona=persona-4,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=123] COORD DECISION  msg=P1-toyjg9-13,puerta=P1,tipo=ENTRADA,persona=persona-9,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=125] COORD DECISION  msg=P2-toyjg9-12,puerta=P2,tipo=ENTRADA,persona=persona-10,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=127] COORD DECISION  msg=P1-toyjg9-14,puerta=P1,tipo=ENTRADA,persona=persona-12,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=129] COORD DECISION  msg=P2-toyjg9-13,puerta=P2,tipo=ENTRADA,persona=persona-13,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=130] COORD DECISION  msg=P3-toyjg9-13,puerta=P3,tipo=ENTRADA,persona=persona-11,resultado=AUTORIZADA,motivo=OK,aforo=1/10
+[L=133] COORD DECISION  msg=P3-toyjg9-10,puerta=P3,tipo=ENTRADA,persona=persona-2,resultado=AUTORIZADA,motivo=OK,aforo=2/10

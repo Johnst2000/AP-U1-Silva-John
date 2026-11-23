@@ -1,0 +1,24 @@
+ESCENARIO E1 - Inicio del coordinador y conexión de las tres puertas
+Se lanza el Coordinador y luego P1, P2 y P3 como procesos separados. Cada puerta se registra con su token.
+Ejecutado el 2026-11-23. Cada línea lleva la hora real (HH:mm:ss.SSS) y el proceso que la produjo.
+----------------------------------------------------------------------------------------------------
+08:42:15.529 [COORD] [L=1] COORD INICIO_PROCESO  modo=normal,aforoMaximo=10,puerto=5000,puertas=P1/P2/P3
+08:42:15.532 [COORD] === AforoSeguro - Coordinador - modo normal - aforo máximo 10 - escuchando en 127.0.0.1:5000 ===
+08:42:15.681 [P1] [L=1] P1 INICIO_PROCESO  puerta=P1,coordinador=127.0.0.1:5000
+08:42:15.699 [P1] === AforoSeguro - Puerta P1 ===
+08:42:15.707 [P1] Comandos: entrada [persona] | salida [persona] | estado | ayuda | salir
+08:42:15.744 [P2] [L=1] P2 INICIO_PROCESO  puerta=P2,coordinador=127.0.0.1:5000
+08:42:15.747 [P3] [L=1] P3 INICIO_PROCESO  puerta=P3,coordinador=127.0.0.1:5000
+08:42:15.764 [P3] === AforoSeguro - Puerta P3 ===
+08:42:15.769 [P3] Comandos: entrada [persona] | salida [persona] | estado | ayuda | salir
+08:42:15.780 [P2] === AforoSeguro - Puerta P2 ===
+08:42:15.780 [P2] Comandos: entrada [persona] | salida [persona] | estado | ayuda | salir
+08:42:15.789 [COORD] [L=4] COORD PUERTA_CONECTADA  puerta=P3
+08:42:15.789 [COORD] [L=6] COORD PUERTA_CONECTADA  puerta=P1
+08:42:15.801 [COORD]     >> Aforo 0/10 | Conectadas: P1 P3 | Desconectadas: P2
+08:42:15.801 [COORD]     >> Aforo 0/10 | Conectadas: P1 P3 | Desconectadas: P2
+08:42:15.812 [P3] [L=9] P3 COORDINADOR_CONECTADO  coordinador=127.0.0.1:5000
+08:42:15.815 [P1] [L=10] P1 COORDINADOR_CONECTADO  coordinador=127.0.0.1:5000
+08:42:15.820 [COORD] [L=10] COORD PUERTA_CONECTADA  puerta=P2
+08:42:15.820 [COORD]     >> Aforo 0/10 | Conectadas: P1 P2 P3 | Desconectadas: -
+08:42:15.824 [P2] [L=13] P2 COORDINADOR_CONECTADO  coordinador=127.0.0.1:5000
