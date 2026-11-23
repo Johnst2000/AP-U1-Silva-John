@@ -19,7 +19,6 @@ Comandos en cada puerta: `entrada [persona]`, `salida [persona]`, `estado`, `sal
 ```
 java -cp out PruebaCarga       prueba de carga: modo normal vs inseguro (E3)
 java -cp out OrdenTotal logs   orden total por Lamport -> logs/orden_total.log (E6)
-java -cp out Escenarios        ejecuta E0 a E6 y guarda la evidencia en docs/evidencias/ (~1 min)
 ```
 
 ## Cómo funciona
@@ -30,4 +29,25 @@ java -cp out Escenarios        ejecuta E0 a E6 y guarda la evidencia en docs/evi
 - Configuración en `config.properties`.
 
 ## Resultados y límites
-Ver `docs/ANALISIS.md` y los archivos reales en `docs/evidencias/` y `logs/`.
+Ver `docs/ANALISIS.md`.
+
+## Formato de los mensajes
+Una línea por mensaje, campos separados por `;`:
+```
+TIPO;ORIGEN;TOKEN;LAMPORT;MSGID;DATO
+```
+- Puerta -> coordinador: `REGISTRO`, `HEARTBEAT`, `ENTRADA`, `SALIDA`, `ESTADO` (`MSGID` identifica el mensaje, p. ej. `P1-toyjef-2`; en `DATO` va el nombre de la persona).
+- Coordinador -> puerta: `RESP;COORD;-;LAMPORT;MSGID;RESULTADO|aforo|max|detalle` (resultado `AUTORIZADA`, `RECHAZADA`, `ACK`, `ESTADO` o `ERROR`).
+- Log de cada proceso: `lamport;id_proceso;evento;detalle`.
+
+## Compilar el informe
+Compilador: `pdflatex`. Desde la carpeta `docs/`:
+```
+pdflatex informe.tex
+pdflatex informe.tex
+pdflatex entrega_SGA.tex
+```
+(`informe.tex` se compila dos veces para las referencias.)
+
+## Código reutilizado
+No se reutilizó código.
